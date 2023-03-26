@@ -13,6 +13,9 @@ public class Rate {
 
     public Rate(BigDecimal normalRate, BigDecimal reducedRate, CarParkKind kind, ArrayList<Period> reducedPeriods
             , ArrayList<Period> normalPeriods) {
+        if (kind == null) {
+            throw new IllegalArgumentException("car park cannot be null");
+        }
         if (reducedPeriods == null || normalPeriods == null) {
             throw new IllegalArgumentException("periods cannot be null");
         }
