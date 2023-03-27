@@ -542,7 +542,7 @@ class TahirMohsinTestTask3 {
         ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(15, 20));
         Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(10, 12));
+        BigDecimal actualValue = rate.calculate(new Period(11, 12));
         BigDecimal expectedValue = BigDecimal.valueOf(5);
         assertEquals(expectedValue, actualValue);
     }
@@ -556,7 +556,7 @@ class TahirMohsinTestTask3 {
         ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(15, 20));
         Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(11, 12));
+        BigDecimal actualValue = rate.calculate(new Period(10, 12));
         BigDecimal expectedValue = BigDecimal.valueOf(10);
         assertEquals(expectedValue, actualValue);
     }
