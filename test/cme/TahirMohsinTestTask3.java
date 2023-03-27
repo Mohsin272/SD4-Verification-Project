@@ -602,5 +602,33 @@ class TahirMohsinTestTask3 {
         BigDecimal expectedValue = BigDecimal.valueOf(4);
         assertEquals(expectedValue, actualValue);
     }
+    @Test
+    public void staffCarParOver10() {
+        BigDecimal normalRate = BigDecimal.valueOf(5);
+        BigDecimal reducedRate = BigDecimal.valueOf(2);
+        CarParkKind kind = CarParkKind.STAFF;
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(1, 12));
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(15, 20));
+        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+        BigDecimal actualValue = rate.calculate(new Period(2,5));
+        BigDecimal expectedValue = BigDecimal.valueOf(10);
+        assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void staffCarParUnder10() {
+        BigDecimal normalRate = BigDecimal.valueOf(5);
+        BigDecimal reducedRate = BigDecimal.valueOf(2);
+        CarParkKind kind = CarParkKind.STAFF;
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(1, 12));
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(15, 20));
+        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+        BigDecimal actualValue = rate.calculate(new Period(16,17));
+        BigDecimal expectedValue = BigDecimal.valueOf(2);
+        assertEquals(expectedValue, actualValue);
+    }
 
 }
