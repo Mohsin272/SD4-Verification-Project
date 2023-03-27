@@ -113,6 +113,15 @@ public class Rate {
                 return remainingCost;
             }
         }
+        else if (kind == CarParkKind.MANAGEMENT) {
+            BigDecimal minAmount = BigDecimal.valueOf(5);
+            if (total.compareTo(minAmount) <= 0) { // if total is less than 5 then return 5
+                return minAmount;
+            }
+            else{ //return the total amount
+                return total;
+            }
+        }
         return BigDecimal.ZERO;
 
     }
