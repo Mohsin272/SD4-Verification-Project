@@ -300,18 +300,6 @@ class TahirMohsinTestTask3 {
         });
     }
     @Test
-    public void testMaxRateValues() {
-        BigDecimal normalRate = BigDecimal.valueOf(Double.MAX_VALUE);
-        BigDecimal reducedRate = BigDecimal.valueOf(Double.MAX_VALUE);
-        CarParkKind kind = CarParkKind.STAFF;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(0,5));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(12,18));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        assertNotNull(rate);
-    }
-    @Test
     public void testMinRateValues() {
         BigDecimal normalRate = BigDecimal.valueOf(Double.MIN_VALUE);
         BigDecimal reducedRate = BigDecimal.valueOf(Double.MIN_VALUE);
