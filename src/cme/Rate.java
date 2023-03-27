@@ -134,8 +134,18 @@ public class Rate {
                 BigDecimal totalReductionAmount=remainder.subtract(remainderCost);//take that amount from the amount over 5.50
                 return totalReductionAmount.add(reductionAmount);//add 5.50 and the reduced amount
             }
+        } else if (kind==CarParkKind.STAFF) {
+            BigDecimal maxPayable=BigDecimal.valueOf(10);
+            if(total.compareTo(maxPayable)<=0){// If total is less than 10 then return total
+                return total;
+            }
+            else {// If total is greater than 10 then return 10
+                return maxPayable;
+            }
         }
-        return BigDecimal.ZERO;
+        else {
+            throw new IllegalArgumentException("Couldnt find your Car Park");
+        }
 
     }
 }
