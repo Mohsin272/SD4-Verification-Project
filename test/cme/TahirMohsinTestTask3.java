@@ -346,171 +346,219 @@ class TahirMohsinTestTask3 {
      *          CALCULATE TEST CASES           *
      *                                         *
      *******************************************/
+//    @Test
+//    public void testValidCalculation() {
+//        BigDecimal normalRate = BigDecimal.valueOf(5);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.STAFF;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(5, 8));
+//        normalPeriods.add(new Period(10, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(3, 5));
+//        reducedPeriods.add(new Period(8, 10));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(1, 20));
+//        BigDecimal expectedValue = BigDecimal.valueOf(33);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//    @Test
+//    public void testStayPeriodInNormalPeriods() {
+//        BigDecimal normalRate = BigDecimal.valueOf(5);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.STAFF;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(10, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(3, 5));
+//        reducedPeriods.add(new Period(8, 10));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(10, 12));
+//        BigDecimal expectedValue = BigDecimal.valueOf(10);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//
+//    @Test
+//    public void testStayPeriodInReducedPeriods() {
+//        BigDecimal normalRate = BigDecimal.valueOf(5);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.MANAGEMENT;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(5, 8));
+//        normalPeriods.add(new Period(10, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(8, 10));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(8, 10));
+//        BigDecimal expectedValue = BigDecimal.valueOf(4);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//
+//    @Test
+//    public void testStayPeriodOverNormalAndReducedPeriods() {
+//        BigDecimal normalRate = BigDecimal.valueOf(5);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.STUDENT;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(5, 8));
+//        normalPeriods.add(new Period(10, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(3, 5));
+//        reducedPeriods.add(new Period(8, 10));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(9, 12));
+//        BigDecimal expectedValue = BigDecimal.valueOf(12);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//
+//    @Test
+//    public void testStayOverFreePeriod() {
+//        BigDecimal normalRate = BigDecimal.valueOf(2);
+//        BigDecimal reducedRate = BigDecimal.valueOf(1);
+//        CarParkKind kind = CarParkKind.STAFF;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(6, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(14, 16));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(18, 22));
+//        BigDecimal expectedValue = BigDecimal.valueOf(0);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//    @Test
+//    public void testStayOverFreeAndNormalPeriod() {
+//        BigDecimal normalRate = BigDecimal.valueOf(3);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.MANAGEMENT;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(9, 10));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(14, 16));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(9, 12));
+//        BigDecimal expectedValue = BigDecimal.valueOf(3);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//
+//    @Test
+//    public void testStayOverFreeAndReducedPeriod() {
+//        BigDecimal normalRate = BigDecimal.valueOf(8);
+//        BigDecimal reducedRate = BigDecimal.valueOf(5);
+//        CarParkKind kind = CarParkKind.STAFF;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(5, 10));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(14, 16));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(15, 22));
+//        BigDecimal expectedValue = BigDecimal.valueOf(5);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//
+//    @Test
+//    public void testStayOverNormalReducedAndFreePeriod() {
+//        BigDecimal normalRate = BigDecimal.valueOf(10);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.VISITOR;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(5, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(14, 18));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(6, 20));
+//        BigDecimal expectedValue = BigDecimal.valueOf(68);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//
+//    @Test
+//    public void testStayAllDay() {
+//        BigDecimal normalRate = BigDecimal.valueOf(5);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.STUDENT;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(6, 10));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(18, 20));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(0, 24));
+//        BigDecimal expectedValue = BigDecimal.valueOf(24);
+//        assertEquals(expectedValue, actualValue);
+//    }
+//
+//    @Test
+//    public void testStayNullPeriod() {
+//        BigDecimal normalRate = BigDecimal.valueOf(5);
+//        BigDecimal reducedRate = BigDecimal.valueOf(2);
+//        CarParkKind kind = CarParkKind.MANAGEMENT;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(10, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(15, 20));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        assertThrows(NullPointerException.class, () -> {
+//            rate.calculate(null);
+//        });
+//    }
+//    @Test
+//    public void testStayPeriodOneHour() {
+//        BigDecimal normalRate = BigDecimal.valueOf(5);
+//        BigDecimal reducedRate = BigDecimal.valueOf(4);
+//        CarParkKind kind = CarParkKind.VISITOR;
+//        ArrayList<Period> normalPeriods = new ArrayList<>();
+//        normalPeriods.add(new Period(10, 12));
+//        ArrayList<Period> reducedPeriods = new ArrayList<>();
+//        reducedPeriods.add(new Period(15, 20));
+//        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+//        BigDecimal actualValue = rate.calculate(new Period(11, 12));
+//        BigDecimal expectedValue = BigDecimal.valueOf(5);
+//        assertEquals(expectedValue, actualValue);
+//    }
+    /*******************************************
+     *                                         *
+     *          TDD TEST CASES                 *
+     *                                         *
+     *******************************************/
     @Test
-    public void testValidCalculation() {
-        BigDecimal normalRate = BigDecimal.valueOf(5);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.STAFF;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(5, 8));
-        normalPeriods.add(new Period(10, 12));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(3, 5));
-        reducedPeriods.add(new Period(8, 10));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(1, 20));
-        BigDecimal expectedValue = BigDecimal.valueOf(33);
-        assertEquals(expectedValue, actualValue);
-    }
-    @Test
-    public void testStayPeriodInNormalPeriods() {
-        BigDecimal normalRate = BigDecimal.valueOf(5);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.STAFF;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(10, 12));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(3, 5));
-        reducedPeriods.add(new Period(8, 10));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(10, 12));
-        BigDecimal expectedValue = BigDecimal.valueOf(10);
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    public void testStayPeriodInReducedPeriods() {
-        BigDecimal normalRate = BigDecimal.valueOf(5);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.MANAGEMENT;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(5, 8));
-        normalPeriods.add(new Period(10, 12));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(8, 10));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(8, 10));
-        BigDecimal expectedValue = BigDecimal.valueOf(4);
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    public void testStayPeriodOverNormalAndReducedPeriods() {
-        BigDecimal normalRate = BigDecimal.valueOf(5);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.STUDENT;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(5, 8));
-        normalPeriods.add(new Period(10, 12));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(3, 5));
-        reducedPeriods.add(new Period(8, 10));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(9, 12));
-        BigDecimal expectedValue = BigDecimal.valueOf(12);
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    public void testStayOverFreePeriod() {
-        BigDecimal normalRate = BigDecimal.valueOf(2);
-        BigDecimal reducedRate = BigDecimal.valueOf(1);
-        CarParkKind kind = CarParkKind.STAFF;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(6, 12));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(14, 16));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(18, 22));
-        BigDecimal expectedValue = BigDecimal.valueOf(0);
-        assertEquals(expectedValue, actualValue);
-    }
-    @Test
-    public void testStayOverFreeAndNormalPeriod() {
-        BigDecimal normalRate = BigDecimal.valueOf(3);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.MANAGEMENT;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(9, 10));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(14, 16));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(9, 12));
-        BigDecimal expectedValue = BigDecimal.valueOf(3);
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    public void testStayOverFreeAndReducedPeriod() {
-        BigDecimal normalRate = BigDecimal.valueOf(8);
-        BigDecimal reducedRate = BigDecimal.valueOf(5);
-        CarParkKind kind = CarParkKind.STAFF;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(5, 10));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(14, 16));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(15, 22));
-        BigDecimal expectedValue = BigDecimal.valueOf(5);
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    public void testStayOverNormalReducedAndFreePeriod() {
-        BigDecimal normalRate = BigDecimal.valueOf(10);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.VISITOR;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(5, 12));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(14, 18));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(6, 20));
-        BigDecimal expectedValue = BigDecimal.valueOf(68);
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    public void testStayAllDay() {
-        BigDecimal normalRate = BigDecimal.valueOf(5);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.STUDENT;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(6, 10));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(18, 20));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        BigDecimal actualValue = rate.calculate(new Period(0, 24));
-        BigDecimal expectedValue = BigDecimal.valueOf(24);
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    public void testStayNullPeriod() {
-        BigDecimal normalRate = BigDecimal.valueOf(5);
-        BigDecimal reducedRate = BigDecimal.valueOf(2);
-        CarParkKind kind = CarParkKind.MANAGEMENT;
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(10, 12));
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(15, 20));
-        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
-        assertThrows(NullPointerException.class, () -> {
-            rate.calculate(null);
-        });
-    }
-    @Test
-    public void testStayPeriodOneHour() {
+    public void visitorCarParkOver10() {
         BigDecimal normalRate = BigDecimal.valueOf(5);
         BigDecimal reducedRate = BigDecimal.valueOf(4);
         CarParkKind kind = CarParkKind.VISITOR;
         ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(10, 12));
+        normalPeriods.add(new Period(1, 12));
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(15, 20));
+        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+        BigDecimal actualValue = rate.calculate(new Period(9, 12));
+        BigDecimal expectedValue = BigDecimal.valueOf(2.50);
+        assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void visitorCarParkUnder10() {
+        BigDecimal normalRate = BigDecimal.valueOf(5);
+        BigDecimal reducedRate = BigDecimal.valueOf(4);
+        CarParkKind kind = CarParkKind.VISITOR;
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(1, 12));
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(15, 20));
+        Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
+        BigDecimal actualValue = rate.calculate(new Period(10, 12));
+        BigDecimal expectedValue = BigDecimal.valueOf(5);
+        assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void visitorCarParkIs10() {
+        BigDecimal normalRate = BigDecimal.valueOf(5);
+        BigDecimal reducedRate = BigDecimal.valueOf(4);
+        CarParkKind kind = CarParkKind.VISITOR;
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(1, 12));
         ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(15, 20));
         Rate rate = new Rate(normalRate, reducedRate, kind, reducedPeriods, normalPeriods);
         BigDecimal actualValue = rate.calculate(new Period(11, 12));
-        BigDecimal expectedValue = BigDecimal.valueOf(5);
+        BigDecimal expectedValue = BigDecimal.valueOf(10);
         assertEquals(expectedValue, actualValue);
     }
+
 }
