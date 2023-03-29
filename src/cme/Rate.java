@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rate {
+    private CarParkRate type;
     private CarParkKind kind;
     private BigDecimal hourlyNormalRate;
     private BigDecimal hourlyReducedRate;
@@ -25,8 +26,7 @@ public class Rate {
         if (normalRate.compareTo(BigDecimal.ZERO) < 0 || reducedRate.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("A rate cannot be negative");
         }
-        if (normalRate.compareTo(BigDecimal.ZERO) != 0
-                && normalRate.compareTo(reducedRate) <= 0) {
+        if (normalRate.compareTo(reducedRate) < 0) {
             throw new IllegalArgumentException("The normal rate cannot be less or equal to the reduced rate");
         }
         if (!isValidPeriods(reducedPeriods) || !isValidPeriods(normalPeriods)) {
@@ -40,6 +40,7 @@ public class Rate {
         this.hourlyReducedRate = reducedRate;
         this.reduced = reducedPeriods;
         this.normal = normalPeriods;
+        this.type = CarParkRateFactory.createCarParkRate(kind);
     }
 
     /**
@@ -99,53 +100,9 @@ public class Rate {
     public BigDecimal calculate(Period periodStay) {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-//        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
-//                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
         BigDecimal total = this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)).add(
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
-        if (kind == CarParkKind.VISITOR) {
-            BigDecimal freeAmount = BigDecimal.valueOf(10);
-            BigDecimal fiftyPercent = BigDecimal.valueOf(0.5);
-            if (total.compareTo(freeAmount) <= 0) { // if total is less than freeAmount then return total
-                return total;
-            } else { // If total is greater than 10, then apply 50% reduction above the 10
-                BigDecimal remainingCost = total.subtract(freeAmount).multiply(fiftyPercent);
-                return remainingCost;
-            }
-        }
-        else if (kind == CarParkKind.MANAGEMENT) {
-            BigDecimal minAmount = BigDecimal.valueOf(5);
-            if (total.compareTo(minAmount) <= 0) { // if total is less than 5 then return 5
-                return minAmount;
-            }
-            else{ //return the total amount
-                return total;
-            }
-        }
-        else if (kind==CarParkKind.STUDENT) {
-            BigDecimal reductionAmount = BigDecimal.valueOf(5.50);
-            BigDecimal reductionPercent = BigDecimal.valueOf(0.33);
-            if (total.compareTo(reductionAmount) <= 0) {// if total is less than 5.50 then return total
-                return total;
-            }
-            else { // If total is greater than 5.50, then apply 33% reduction above the 5.50
-                BigDecimal remainder=total.subtract(reductionAmount);//get how much over it is 5.50
-                BigDecimal remainderCost=remainder.multiply(reductionPercent);//apply 33% to that amount over 5.50
-                BigDecimal totalReductionAmount=remainder.subtract(remainderCost);//take that amount from the amount over 5.50
-                return totalReductionAmount.add(reductionAmount);//add 5.50 and the reduced amount
-            }
-        } else if (kind==CarParkKind.STAFF) {
-            BigDecimal maxPayable=BigDecimal.valueOf(10);
-            if(total.compareTo(maxPayable)<=0){// If total is less than 10 then return total
-                return total;
-            }
-            else {// If total is greater than 10 then return 10
-                return maxPayable;
-            }
-        }
-        else {
-            throw new IllegalArgumentException("Couldnt find your Car Park");
-        }
-
+        BigDecimal charge = type.reduction(total);
+        return charge;
     }
 }
